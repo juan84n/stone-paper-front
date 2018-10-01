@@ -1,0 +1,31 @@
+<h1>The current player is {{player.name}}</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <form #formTablero="ngForm">
+        <select class="form-control form-control-lg" #played (change)="onChange($event.target.value)">
+          <option disabled>Choose an Option</option>
+          <option *ngFor="let move of movements" [value]="move">{{ move | uppercase }}</option>
+        </select>
+        <div *ngIf="hide" class="p-3 mb-2 bg-danger text-white">This field is required</div>
+        <button [disabled]="hide"  type="button" (click)="makePlayed(played.value)" class="btn btn-primary mt-2">Submit</button>
+      </form>
+    </div>
+    <div class="col-sm" *ngIf="score.length">
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Round</th>
+            <th scope="col">Winner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of score">
+            <th scope="row">{{item.round}}</th>
+            <td>{{item.playerWinner.name}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

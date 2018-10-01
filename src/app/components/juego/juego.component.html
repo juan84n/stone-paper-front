@@ -1,0 +1,12 @@
+<app-usuarios *ngIf="!isGameStarted.isStarted && gameWinner.wins === 0" (gameStarted)="startGame( $event )" >
+
+</app-usuarios>
+
+<app-tablero *ngIf="isGameStarted.isStarted" [score]="score"  [player]="currentPlayer" (playedDone)="getPlayed( $event )"></app-tablero>
+
+<div class="jumbotron" *ngIf="gameWinner.wins === 3">
+    <h1 class="display-4">{{gameWinner.name}}</h1>
+    <p class="lead">Congratulations you've been the winner of the Stone, paper and Scissor game</p>
+    <hr class="my-4">
+    <a class="btn btn-primary btn-lg text-white" (click)="initGame()" role="button">Play again</a>
+  </div>

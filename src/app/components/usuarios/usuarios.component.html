@@ -1,0 +1,14 @@
+<form #formUsuario ="ngForm">
+  <div class="form-group">
+    <label for="player1">Player 1</label>
+    <input required type="text" [(ngModel)]="player1.name" #player1_name="ngModel"  name="player1_name" id="player1_name"  class="form-control"  placeholder="Enter Player 1">
+    <div *ngIf="player1_name.touched && !player1_name.valid" class="p-3 mb-2 bg-danger text-white">This field is required</div>
+  </div>
+  <div class="form-group">
+    <label for="player2">Player 2</label>
+    <input required type="text" [(ngModel)]="player2.name" #player2_name="ngModel"  name="player2_name" id="player2_name"   class="form-control" placeholder="Enter player 2">
+    <div *ngIf="player2_name.touched && !player2_name.valid" class="p-3 mb-2 bg-danger text-white">This field is required</div>
+  </div>
+  <button type="button" (click)="startGame(formUsuario)" class="btn btn-primary">Submit</button>
+  <button type="button" (click)="showStatistics()" class="btn btn-primary">Show Statistics</button>
+</form>
